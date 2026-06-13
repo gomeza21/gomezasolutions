@@ -3,124 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOMEZA | Ingeniería, Construcción y Soluciones Digitales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>GOMEZA - Ingeniería y Soluciones</title>
     <style>
-        /* ESTRUCTURA PESADA DE DISEÑO */
-        :root {
-            --petroleo: #123d3f; --turquesa: #2c9fa8; --turquesa-claro: #62f4ff;
-            --negro: #0f1115; --gris: #f6f8fa; --blanco: #ffffff;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--gris); overflow-x: hidden; }
+        /* === ESTILOS GENERALES === */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        html { scroll-behavior: smooth; }
 
-        /* HEADER INTEGRADO */
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(18,61,63,.75); backdrop-filter: blur(15px); }
-        .logo { font-size: 2rem; font-weight: 900; letter-spacing: 4px; color: white; }
-        nav ul { display: flex; list-style: none; gap: 40px; }
-        nav a { text-decoration: none; color: white; font-weight: 500; transition: .3s; }
-        nav a:hover { color: var(--turquesa-claro); }
+        /* === MENÚ DE NAVEGACIÓN === */
+        header { background-color: #1a4747; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; max-width: 1200px; margin: auto; }
+        .logo-text { color: #ffffff; font-size: 24px; font-weight: bold; letter-spacing: 2px; text-decoration: none; }
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 30px; position: relative; }
+        .nav-links a { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 16px; transition: color 0.3s ease; }
+        .nav-links a:hover { color: #48b5b5; }
 
-        /* HERO PESADO */
-        .hero { min-height: 100vh; background: linear-gradient(135deg, #081a1d, #123d3f, #1f6b70, #2c9fa8); display: flex; align-items: center; padding: 0 8%; position: relative; overflow: hidden; }
-        .hero-content { max-width: 750px; position: relative; z-index: 10; }
-        .badge { display: inline-block; padding: 12px 24px; background: rgba(255,255,255,.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.2); border-radius: 50px; color: white; margin-bottom: 25px; }
-        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1; color: white; }
-        .hero h1 span { display: block; color: var(--turquesa-claro); }
-        .hero p { margin-top: 30px; font-size: 1.2rem; color: #d8e3e3; max-width: 650px; }
-        .hero-buttons { margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap; }
-        .btn { padding: 18px 40px; border-radius: 60px; text-decoration: none; font-weight: 700; transition: .4s; }
-        .btn-primary { background: white; color: var(--petroleo); }
-        .btn-wa { background: var(--turquesa); color: white; border: 2px solid white; }
+        /* === MENÚ DESPLEGABLE === */
+        .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 8px; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eeeeee; }
+        .dropdown-content a:hover { background-color: #f4f7f6; color: #1a4747; }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        /* CIRCULOS DE EFECTO */
-        .circle { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .5; }
-        .c1 { width: 500px; height: 500px; background: #49f5ff; top: -150px; right: -150px; }
-        .c2 { width: 400px; height: 400px; background: #2c9fa8; bottom: -150px; left: -150px; }
-
-        /* SECCIONES EXPANDIDAS */
-        .stats { background: white; padding: 90px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: center; }
-        .services { padding: 120px 8%; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+        /* === SECCIÓN PORTADA (HERO) === */
+        .hero { background: linear-gradient(135deg, #1a4747 0%, #2c7a7b 100%); color: #ffffff; text-align: center; padding: 180px 20px 120px 20px; }
+        .hero img { max-width: 220px; margin-bottom: 20px; background-color: white; border-radius: 50%; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .hero h1 { font-size: 45px; margin-bottom: 15px; letter-spacing: 1px; }
+        .hero p { font-size: 18px; max-width: 600px; margin: auto; color: #e0f2f1; }
         
-        /* PORTFOLIO MANTENIDO */
-        .portfolio { padding: 120px 8%; }
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
-        .project { position: relative; overflow: hidden; border-radius: 25px; height: 350px; }
-        .project img { width: 100%; height: 100%; object-fit: cover; }
+        /* BOTÓN WHATSAPP */
+        .btn-wa { display: inline-block; margin-top: 30px; padding: 15px 40px; background: #25d366; color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .btn-wa:hover { transform: scale(1.05); background: #128c7e; }
 
-        /* CONTACTO Y FOOTER */
-        .contact { padding: 120px 8%; background: white; text-align: center; }
-        .whatsapp { display: inline-block; padding: 20px 45px; background: var(--turquesa); color: white; text-decoration: none; font-weight: 700; border-radius: 60px; }
-        footer { background: var(--negro); color: white; padding: 80px 8%; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        /* === SECCIONES === */
+        .section-container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        .section-title { text-align: center; font-size: 35px; color: #1a4747; margin-bottom: 50px; text-transform: uppercase; font-weight: bold; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background-color: #ffffff; padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #2c7a7b; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-10px); }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .portfolio-item { background-color: #eee; border-radius: 10px; height: 250px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid #2c7a7b; }
+
+        /* === SECCIÓN EXTRA DE PESO === */
+        .info-extra { background: #1a4747; color: white; padding: 80px; text-align: center; }
+
+        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 50px 20px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">GOMEZA</div>
-    <nav><ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#portafolio">Portafolio</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-    </ul></nav>
-</header>
-
-<section class="hero" id="inicio">
-    <div class="circle c1"></div>
-    <div class="circle c2"></div>
-    <div class="hero-content">
-        <div class="badge">INGENIERÍA • TECNOLOGÍA • INNOVACIÓN</div>
-        <h1>Transformamos ideas en <span>resultados reales</span></h1>
-        <p>Soluciones de ingeniería, automatización y transformación digital para empresas de alto rendimiento.</p>
-        <div class="hero-buttons">
-            <a href="#contacto" class="btn btn-primary">Solicitar Consultoría</a>
-            <a href="https://wa.me/qr/EUBYQYZDTMUSA1" target="_blank" class="btn btn-wa">Consultar por WhatsApp</a>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo-text">GOMEZA</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li class="dropdown">
+                    <a href="#portafolio">Portafolio ▼</a>
+                    <div class="dropdown-content">
+                        <a href="#portafolio">Obras y Diseños</a>
+                        <a href="#portafolio">Plantillas Excel</a>
+                        <a href="#portafolio">Videos Demostrativos</a>
+                    </div>
+                </li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-    </div>
-</section>
+    </header>
 
-<section class="stats">
-    <div class="stat"><h2>+100</h2><p>Proyectos Ejecutados</p></div>
-    <div class="stat"><h2>98%</h2><p>Satisfacción</p></div>
-    <div class="stat"><h2>24/7</h2><p>Soporte Técnico</p></div>
-    <div class="stat"><h2>100%</h2><p>Compromiso</p></div>
-</section>
+    <section id="inicio" class="hero">
+        <img src="logo.png" alt="Logo GOMEZA">
+        <h1>SOLUCIONES EN INGENIERÍA Y CONSTRUCCIÓN</h1>
+        <p>Especialistas en metrados, presupuestos y desarrollo de herramientas profesionales.</p>
+        <a href="https://wa.me/qr/EUBYQYZDTMUSA1" class="btn-wa" target="_blank">Contactar por WhatsApp</a>
+    </section>
 
-<section class="services" id="servicios">
-    <div class="section-title"><h2>Servicios Estratégicos</h2></div>
-    <div class="services-grid">
-        <div class="service-card"><h3>Gestión de Obras</h3><p>Supervisión técnica, metrados y control integral.</p></div>
-        <div class="service-card"><h3>Automatización Excel</h3><p>Dashboards y reportes inteligentes.</p></div>
-        <div class="service-card"><h3>Consultoría Técnica</h3><p>Optimización de recursos y decisiones estratégicas.</p></div>
-        <div class="service-card"><h3>Transformación Digital</h3><p>Modernización empresarial.</p></div>
-    </div>
-</section>
+    <section id="servicios" class="section-container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card"><h3>Metrados</h3><p>Cálculo preciso de cantidades de obra.</p></div>
+            <div class="service-card"><h3>Presupuestos</h3><p>Análisis de precios unitarios y control de costos.</p></div>
+            <div class="service-card"><h3>Plantillas Excel</h3><p>Desarrollo de herramientas automatizadas.</p></div>
+        </div>
+    </section>
 
-<section class="portfolio" id="portafolio">
-    <div class="section-title"><h2>Portafolio</h2></div>
-    <div class="projects">
-        <div class="project"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72"></div>
-    </div>
-</section>
+    <section class="info-extra">
+        <h2>COMPROMISO GOMEZA</h2>
+        <p style="margin-top:20px;">Entregamos excelencia técnica y resultados medibles.</p>
+    </section>
 
-<section class="contact" id="contacto">
-    <h2>Hablemos de tu proyecto</h2>
-    <a href="https://wa.me/qr/EUBYQYZDTMUSA1" target="_blank" class="whatsapp">Contactar por WhatsApp</a>
-</section>
+    <section id="portafolio" class="section-container" style="background-color: #ffffff; border-radius: 12px; padding: 60px;">
+        <h2 class="section-title">Galería de Proyectos</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">Proyecto 01</div>
+            <div class="portfolio-item">Proyecto 02</div>
+            <div class="portfolio-item">Proyecto 03</div>
+        </div>
+    </section>
 
-<footer>
-    <div class="footer-grid">
-        <div><h3>GOMEZA</h3><p>Ingeniería y soluciones digitales.</p></div>
-        <div><h3>Servicios</h3><p>Gestión, Automatización, Consultoría.</p></div>
-        <div><h3>Contacto</h3><p>Atención privada.</p></div>
-    </div>
-</footer>
+    <footer id="contacto">
+        <h2>GOMEZA Solutions</h2>
+        <a href="https://wa.me/qr/EUBYQYZDTMUSA1" class="btn-wa" target="_blank">WhatsApp Directo</a>
+        <p style="margin-top: 20px;">© 2024 Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
