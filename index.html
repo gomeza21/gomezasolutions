@@ -28,7 +28,12 @@ footer{text-align:center;color:#888;}
 
 <section>
 <h2>Servicios</h2>
-<div class="cards" id="productos">Cargando productos...</div>
+<div class="cards">
+<div class="card"><h3>Plantillas de Metrados</h3><p>Plantillas profesionales para metrados</p><p style="color:#D4AF37;font-size:1.4rem"><strong>S/ 79</strong></p></div>
+<div class="card"><h3>Presupuestos y APU</h3><p>Formatos optimizados para presupuestos</p><p style="color:#D4AF37;font-size:1.4rem"><strong>S/ 89</strong></p></div>
+<div class="card"><h3>Google Apps Script</h3><p>Sistemas web personalizados</p><p style="color:#D4AF37;font-size:1.4rem"><strong>Desde S/ 300</strong></p></div>
+<div class="card"><h3>Automatización</h3><p>Digitalización de procesos</p><p style="color:#D4AF37;font-size:1.4rem"><strong>Desde S/ 150</strong></p></div>
+</div>
 </section>
 
 <section class="contacto">
@@ -38,33 +43,5 @@ footer{text-align:center;color:#888;}
 </section>
 
 <footer>© 2025 GOMEZA SOLUTIONS</footer>
-
-<script>
-const SHEET_ID = "1XoqHM6NLzTp9Ej_ND2eUg9ZBuMZuYAuCoE4-wIXGkV4";
-const URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
-
-fetch(URL)
-  .then(res => res.text())
-  .then(text => {
-    const json = text.substring(47).slice(0, -2);
-    const data = JSON.parse(json);
-    const rows = data.table.rows;
-    let html = "";
-    for (let i = 1; i < rows.length; i++) {
-      const producto = rows[i].c[0]?.v || "";
-      const descripcion = rows[i].c[1]?.v || "";
-      const precio = rows[i].c[2]?.v || "";
-      const oferta = rows[i].c[3]?.v || "";
-      html += `<div class="card">
-        <h3>${producto}</h3>
-        <p>${descripcion}</p>
-        <p style="color:#D4AF37;font-size:1.4rem"><strong>${precio}</strong></p>
-        ${oferta ? `<p style="color:#FF8888">🔥 ${oferta}</p>` : ""}
-      </div>`;
-    }
-    document.getElementById("productos").innerHTML = html;
-  })
-  .catch(() => document.getElementById("productos").innerHTML = '<div class="card">Error al cargar. Recarga la página.</div>');
-</script>
 </body>
 </html>
