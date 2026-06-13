@@ -2,102 +2,25 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOMEZA SOLUTIONS</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0A1C1A;
-color:#FFFFFF;
-}
-
-header{
-background:#0A1C1A;
-padding:60px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:3rem;
-margin-bottom:10px;
-color:#D4AF37;
-}
-
-header p{
-font-size:1.1rem;
-color:#CCCCCC;
-}
-
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:#D4AF37;
-color:#0A1C1A;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
-
-.btn:hover{
-background:#B8942E;
-}
-
-section{
-padding:50px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-h2{
-margin-bottom:20px;
-text-align:center;
-color:#D4AF37;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:#1E2F2B;
-padding:25px;
-border-radius:10px;
-}
-
-.card h3{
-margin-bottom:10px;
-color:#D4AF37;
-}
-
-.card p{
-color:#CCCCCC;
-}
-
-.contacto{
-text-align:center;
-}
-
-footer{
-background:#0A1C1A;
-padding:20px;
-text-align:center;
-color:#888;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#0A1C1A;color:#FFF;}
+header{background:#0A1C1A;padding:60px 20px;text-align:center;}
+header h1{font-size:3rem;color:#D4AF37;}
+.btn{display:inline-block;margin-top:20px;padding:12px 25px;background:#D4AF37;color:#0A1C1A;text-decoration:none;border-radius:8px;font-weight:bold;}
+section{padding:50px 20px;max-width:1100px;margin:auto;}
+h2{text-align:center;color:#D4AF37;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.card{background:#1E2F2B;padding:25px;border-radius:10px;}
+.card h3{color:#D4AF37;}
+.contacto{text-align:center;}
+footer{text-align:center;color:#888;}
 </style>
 </head>
 <body>
-
 <header>
-<img src="logo.png" alt="GOMEZA SOLUTIONS" width="180">
+<img src="logo.png" width="180">
 <h1>GOMEZA SOLUTIONS</h1>
 <p>Automatización y soluciones digitales para ingeniería</p>
 <a class="btn" href="https://wa.me/51917810116">Solicitar Información</a>
@@ -105,63 +28,43 @@ color:#888;
 
 <section>
 <h2>Servicios</h2>
-<div class="cards" id="productos-container">
-    <div class="card">Cargando productos desde Google Sheets...</div>
-</div>
+<div class="cards" id="productos">Cargando productos...</div>
 </section>
 
 <section class="contacto">
 <h2>Contacto</h2>
 <p>WhatsApp: 917810116</p>
-<br>
 <a class="btn" href="https://wa.me/51917810116">Escribir por WhatsApp</a>
 </section>
 
 <footer>© 2025 GOMEZA SOLUTIONS</footer>
 
 <script>
-// IMPORTANTE: Reemplaza esta URL con tu enlace CSV de Google Sheets
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTlklYGoOZfkwudNSRmLsSSrSA97CLvvHOLOS9gY7_omdTM7KxMhBREZiryNxHoTtqVogQTg2GGucG_/pub?output=csv";
+const SHEET_ID = "1XoqHM6NLzTp9Ej_ND2eUg9ZBuMZuYAuCoE4-wIXGkV4";
+const URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
-async function cargarProductos() {
-    try {
-        const respuesta = await fetch(CSV_URL);
-        const textoCSV = await respuesta.text();
-        
-        // Convertir CSV a array de objetos
-        const lineas = textoCSV.trim().split("\n");
-        const encabezados = lineas[0].split(",");
-        const productos = [];
-        
-        for (let i = 1; i < lineas.length; i++) {
-            const valores = lineas[i].split(",");
-            let producto = {};
-            for (let j = 0; j < encabezados.length; j++) {
-                producto[encabezados[j]] = valores[j] ? valores[j].replace(/^"|"$/g, '') : "";
-            }
-            productos.push(producto);
-        }
-        
-        // Generar HTML de tarjetas
-        let html = "";
-        for (let p of productos) {
-            let ofertaTexto = p.oferta ? `<p style="color:#FF8888; margin-top:10px;">🔥 ${p.oferta}</p>` : "";
-            html += `
-            <div class="card">
-                <h3>${p.producto}</h3>
-                <p>${p.descripcion}</p>
-                <p style="color:#D4AF37; font-size:1.4rem; margin-top:15px;"><strong>${p.precio}</strong></p>
-                ${ofertaTexto}
-            </div>`;
-        }
-        document.getElementById("productos-container").innerHTML = html;
-    } catch (error) {
-        console.error("Error al cargar productos:", error);
-        document.getElementById("productos-container").innerHTML = '<div class="card">Error al cargar productos. Por favor recarga la página.</div>';
+fetch(URL)
+  .then(res => res.text())
+  .then(text => {
+    const json = text.substring(47).slice(0, -2);
+    const data = JSON.parse(json);
+    const rows = data.table.rows;
+    let html = "";
+    for (let i = 1; i < rows.length; i++) {
+      const producto = rows[i].c[0]?.v || "";
+      const descripcion = rows[i].c[1]?.v || "";
+      const precio = rows[i].c[2]?.v || "";
+      const oferta = rows[i].c[3]?.v || "";
+      html += `<div class="card">
+        <h3>${producto}</h3>
+        <p>${descripcion}</p>
+        <p style="color:#D4AF37;font-size:1.4rem"><strong>${precio}</strong></p>
+        ${oferta ? `<p style="color:#FF8888">🔥 ${oferta}</p>` : ""}
+      </div>`;
     }
-}
-
-cargarProductos();
+    document.getElementById("productos").innerHTML = html;
+  })
+  .catch(() => document.getElementById("productos").innerHTML = '<div class="card">Error al cargar. Recarga la página.</div>');
 </script>
 </body>
 </html>
