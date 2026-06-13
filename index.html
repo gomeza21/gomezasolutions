@@ -1,47 +1,223 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gomeza Solutions</title>
+<title>GOMEZA SOLUTIONS</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#0A1C1A;color:white;}
-header{background:#0A1C1A;padding:60px 20px;text-align:center;}
-header h1{font-size:3rem;margin-bottom:10px;color:#D4AF37;}
-header p{font-size:1.1rem;color:#ccc;}
-.btn{display:inline-block;margin-top:20px;padding:12px 25px;background:#D4AF37;color:#0A1C1A;text-decoration:none;border-radius:8px;font-weight:bold;}
-section{padding:50px 20px;max-width:1100px;margin:auto;}
-h2{text-align:center;margin-bottom:20px;color:#D4AF37;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.card{background:#1E2F2B;padding:25px;border-radius:10px;}
-.card h3{color:#D4AF37;margin-bottom:10px;}
-.card p{color:#ccc;}
-.contacto{text-align:center;}
-footer{background:#0A1C1A;padding:20px;text-align:center;color:#888;}
+
+:root{
+--turquesa:#28C7D8;
+--azul:#0F172A;
+--gris:#64748B;
+--fondo:#F8FAFC;
+--blanco:#FFFFFF;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+background:var(--fondo);
+color:var(--azul);
+line-height:1.6;
+}
+
+header{
+background:linear-gradient(135deg,#0F172A,#1E293B);
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+.logo{
+width:180px;
+max-width:90%;
+margin-bottom:25px;
+}
+
+h1{
+font-size:3.5rem;
+font-weight:800;
+letter-spacing:4px;
+margin-bottom:15px;
+text-transform:uppercase;
+}
+
+.subtitulo{
+max-width:850px;
+margin:auto;
+font-size:1.15rem;
+color:#D1D5DB;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+background:var(--turquesa);
+color:white;
+text-decoration:none;
+font-weight:bold;
+border-radius:10px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+section{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+.titulo{
+text-align:center;
+font-size:2.2rem;
+margin-bottom:50px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+.card p{
+color:var(--gris);
+}
+
+.sobre{
+text-align:center;
+max-width:900px;
+margin:auto;
+}
+
+.contacto{
+background:white;
+text-align:center;
+border-radius:15px;
+}
+
+footer{
+background:#0F172A;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+
 </style>
+
 </head>
+
 <body>
+
 <header>
-<img src="logo.png" alt="Gomeza Solutions" width="180">
+
+<img src="logo.png" alt="GOMEZA SOLUTIONS" class="logo">
+
 <h1>GOMEZA SOLUTIONS</h1>
-<p>Automatización y soluciones digitales para ingeniería</p>
-<a class="btn" href="https://wa.me/51917810116">Solicitar Información</a>
+
+<p class="subtitulo">
+Soluciones digitales para ingeniería, construcción y automatización.
+Desarrollamos plantillas profesionales, sistemas web y herramientas avanzadas con Google Sheets y Google Apps Script.
+</p>
+
+<a class="btn" href="https://wa.me/51917810116" target="_blank">
+📲 SOLICITAR INFORMACIÓN
+</a>
+
 </header>
+
 <section>
-<h2>Servicios</h2>
-<div class="cards">
-<div class="card"><h3>Plantillas de Metrados</h3><p>Plantillas profesionales para acelerar metrados.</p><p style="color:#D4AF37;font-size:1.4rem;margin-top:15px;"><strong>S/ 79</strong></p></div>
-<div class="card"><h3>Presupuestos y APU</h3><p>Formatos optimizados para presupuestos y APU.</p><p style="color:#D4AF37;font-size:1.4rem;margin-top:15px;"><strong>S/ 89</strong></p></div>
-<div class="card"><h3>Google Apps Script</h3><p>Sistemas web personalizados con Google Sheets.</p><p style="color:#D4AF37;font-size:1.4rem;margin-top:15px;"><strong>Desde S/ 300</strong></p></div>
-<div class="card"><h3>Automatización</h3><p>Digitalización de procesos de ingeniería.</p><p style="color:#D4AF37;font-size:1.4rem;margin-top:15px;"><strong>Desde S/ 150</strong></p></div>
+
+<h2 class="titulo">NUESTROS SERVICIOS</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📐 Plantillas de Metrados</h3>
+<p>
+Plantillas profesionales para proyectos de construcción, cuantificación de materiales y control de obra.
+</p>
 </div>
+
+<div class="card">
+<h3>📊 Presupuestos y APU</h3>
+<p>
+Herramientas optimizadas para análisis de precios unitarios, costos y presupuestos de proyectos.
+</p>
+</div>
+
+<div class="card">
+<h3>⚙️ Google Apps Script</h3>
+<p>
+Automatización de procesos empresariales conectados con Google Sheets y servicios de Google.
+</p>
+</div>
+
+<div class="card">
+<h3>🌐 Sistemas Web</h3>
+<p>
+Desarrollo de aplicaciones web para empresas, ingenieros, contratistas y emprendedores.
+</p>
+</div>
+
+</div>
+
 </section>
+
+<section class="sobre">
+
+<h2 class="titulo">¿QUIÉNES SOMOS?</h2>
+
+<p>
+GOMEZA SOLUTIONS nace con el objetivo de ayudar a profesionales y empresas a optimizar sus procesos mediante herramientas digitales, automatización y soluciones tecnológicas orientadas al sector de ingeniería y construcción.
+</p>
+
+</section>
+
 <section class="contacto">
-<h2>Contacto</h2>
-<p>WhatsApp: 917810116</p><br>
-<a class="btn" href="https://wa.me/51917810116">Escribir por WhatsApp</a>
+
+<h2 class="titulo">CONTÁCTANOS</h2>
+
+<p>
+¿Necesitas una plantilla, automatización o sistema personalizado?
+</p>
+
+<a class="btn" href="https://wa.me/51917810116" target="_blank">
+💬 HABLAR POR WHATSAPP
+</a>
+
 </section>
-<footer>© 2025 Gomeza Solutions</footer>
+
+<footer>
+
+<p>
+© 2025 GOMEZA SOLUTIONS - TODOS LOS DERECHOS RESERVADOS
+</p>
+
+</footer>
+
 </body>
 </html>
