@@ -5,215 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOMEZA - Ingeniería y Soluciones</title>
     <style>
-        /* === ESTILOS GENERALES === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* === ESTILOS GENERALES Y PALETA DE COLORES GOMEZA === */
+        :root {
+            --color-petroleo: #1a4747;
+            --color-turquesa: #2c9fa8;
+            --color-blanco: #ffffff;
+            --color-fondo: #f4f7f6;
         }
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--color-fondo); color: #333; line-height: 1.6; }
+        html { scroll-behavior: smooth; }
 
         /* === MENÚ DE NAVEGACIÓN === */
-        header {
-            background-color: #1a4747;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .logo-text {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-decoration: none;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            align-items: center;
-        }
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: #48b5b5;
-        }
+        header { background-color: var(--color-petroleo); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; max-width: 1200px; margin: auto; }
+        .logo-text { color: var(--color-blanco); font-size: 24px; font-weight: bold; letter-spacing: 2px; text-decoration: none; }
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 30px; position: relative; }
+        .nav-links a { color: var(--color-blanco); text-decoration: none; font-weight: 500; font-size: 16px; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--color-turquesa); }
 
-        /* === MENÚ DESPLEGABLE (DROPDOWN) === */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            top: 100%;
-            left: 0;
-            overflow: hidden;
-        }
-        .dropdown-content a {
-            color: #333;
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            border-bottom: 1px solid #eeeeee;
-        }
-        .dropdown-content a:hover {
-            background-color: #f4f7f6;
-            color: #1a4747;
-        }
-        /* Mostrar desplegable al pasar el mouse */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        /* === MENÚ DESPLEGABLE === */
+        .dropdown-content { display: none; position: absolute; background-color: var(--color-blanco); min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 8px; top: 100%; left: 0; overflow: hidden; }
+        .dropdown-content a { color: var(--color-petroleo); padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee; }
+        .dropdown-content a:hover { background-color: #f4f7f6; color: var(--color-turquesa); }
+        .dropdown:hover .dropdown-content { display: block; }
 
         /* === SECCIÓN PORTADA (HERO) === */
-        .hero {
-            background: linear-gradient(135deg, #1a4747 0%, #2c7a7b 100%);
-            color: #ffffff;
-            text-align: center;
-            padding: 150px 20px 100px 20px;
-        }
-        .hero img {
-            max-width: 220px;
-            margin-bottom: 20px;
-            background-color: white;
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: auto;
-            color: #e0f2f1;
-        }
+        .hero { background: linear-gradient(135deg, var(--color-petroleo) 0%, var(--color-turquesa) 100%); color: var(--color-blanco); text-align: center; padding: 150px 20px 100px 20px; }
+        .hero img { max-width: 220px; margin-bottom: 20px; background-color: white; border-radius: 50%; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .hero h1 { font-size: 40px; margin-bottom: 15px; }
 
-        /* === CONTENEDOR DE SECCIONES === */
-        .section-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: #1a4747;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+        /* === CONTENEDOR Y SERVICIOS === */
+        .section-container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        .section-title { text-align: center; font-size: 32px; color: var(--color-petroleo); margin-bottom: 50px; text-transform: uppercase; font-weight: bold; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background-color: var(--color-blanco); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--color-turquesa); transition: transform 0.3s ease; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card h3 { color: var(--color-petroleo); margin-bottom: 15px; }
 
-        /* === TARJETAS DE SERVICIOS === */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            background-color: #ffffff;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 5px solid #2c7a7b;
-            transition: transform 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        .service-card h3 {
-            color: #1a4747;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        .service-card p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        /* === GALERÍA DE PORTAFOLIO (CUADRÍCULA BACÁN) === */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-        }
-        .portfolio-item {
-            background-color: #ddd; /* Fondo temporal hasta que pongas tus fotos */
-            border-radius: 10px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            position: relative;
-        }
-        /* Para cuando metas imágenes reales */
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
+        /* === GALERÍA === */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .portfolio-item { background-color: #e0e0e0; border-radius: 10px; height: 250px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-turquesa); color: var(--color-petroleo); font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
         /* === FOOTER === */
-        footer {
-            background-color: #111111;
-            color: #ffffff;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
-        }
+        footer { background-color: #111; color: var(--color-blanco); text-align: center; padding: 30px 20px; margin-top: 40px; border-top: 5px solid var(--color-turquesa); }
     </style>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN Y MENÚ -->
     <header>
         <div class="navbar">
             <a href="#" class="logo-text">GOMEZA</a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                
-                <!-- ESTE ES EL DESPLEGABLE QUE PEDISTE -->
                 <li class="dropdown">
                     <a href="#portafolio">Portafolio ▼</a>
                     <div class="dropdown-content">
@@ -222,79 +69,39 @@
                         <a href="#portafolio">Videos Demostrativos</a>
                     </div>
                 </li>
-                
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- PORTADA PRINCIPAL -->
     <section id="inicio" class="hero">
-        <!-- Llama a tu logo que ya tienes guardado en GitHub -->
         <img src="logo.png" alt="Logo GOMEZA">
         <h1>SOLUCIONES EN INGENIERÍA Y CONSTRUCCIÓN</h1>
-        <p>Especialistas en metrados, presupuestos y desarrollo de herramientas profesionales para la gestión de proyectos.</p>
+        <p>Especialistas en metrados, presupuestos y desarrollo de herramientas profesionales.</p>
     </section>
 
-    <!-- SECCIÓN DE SERVICIOS -->
     <section id="servicios" class="section-container">
         <h2 class="section-title">Nuestros Servicios</h2>
         <div class="services-grid">
-            
-            <div class="service-card">
-                <h3>Metrados</h3>
-                <p>Cálculo preciso y detallado de cantidades de obra para proyectos estructurales y arquitectónicos.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Presupuestos</h3>
-                <p>Elaboración de presupuestos exactos, análisis de precios unitarios y control de costos.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Plantillas Excel y Scripts</h3>
-                <p>Desarrollo de herramientas automatizadas para optimizar el tiempo de cálculo en oficina técnica.</p>
-            </div>
-
+            <div class="service-card"><h3>Metrados</h3><p>Cálculo preciso y detallado de cantidades de obra.</p></div>
+            <div class="service-card"><h3>Presupuestos</h3><p>Análisis de precios unitarios y control de costos.</p></div>
+            <div class="service-card"><h3>Plantillas Excel</h3><p>Desarrollo de herramientas automatizadas de gestión.</p></div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE PORTAFOLIO (LISTA PARA LLENAR) -->
     <section id="portafolio" class="section-container" style="background-color: #ffffff; border-radius: 12px; padding: 60px;">
         <h2 class="section-title">Galería de Proyectos</h2>
-        <p style="text-align: center; margin-bottom: 40px; color: #666;">
-            Aquí se visualizarán internamente tus fotos, planos y capturas de excel.
-        </p>
-        
         <div class="portfolio-grid">
-            <!-- Espacios listos para que luego agregues tus imágenes reales -->
-            <div class="portfolio-item">
-                <p>Espacio para Foto de Obra 1</p>
-                <!-- Luego lo cambiaremos por: <img src="foto-obra-1.jpg" alt="Obra"> -->
-            </div>
-            <div class="portfolio-item">
-                <p>Espacio para Captura Excel</p>
-            </div>
-            <div class="portfolio-item">
-                <p>Espacio para Plano/Render</p>
-            </div>
-            <div class="portfolio-item">
-                <p>Espacio para Foto de Obra 2</p>
-            </div>
-            <div class="portfolio-item">
-                <p>Espacio para Video Demostrativo</p>
-            </div>
-            <div class="portfolio-item">
-                <p>Espacio para Herramienta Script</p>
-            </div>
+            <div class="portfolio-item">Obra 1</div>
+            <div class="portfolio-item">Captura Excel</div>
+            <div class="portfolio-item">Render</div>
+            <div class="portfolio-item">Obra 2</div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer id="contacto">
         <h2>GOMEZA Solutions</h2>
-        <p>Ingeniería, Construcción y Tecnología aplicadas a tus proyectos.</p>
-        <p style="margin-top: 15px; font-size: 14px; color: #888;">© 2024 Todos los derechos reservados.</p>
+        <p>Ingeniería, Construcción y Tecnología aplicada.</p>
     </footer>
 
 </body>
